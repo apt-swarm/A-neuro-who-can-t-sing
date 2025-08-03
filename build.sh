@@ -17,5 +17,6 @@ chmod +x debian/rules
 (deactivate ; dpkg-buildpackage -us -uc -b )
 
 # move files that need to be uploaded to the built directory
+mkdir -p built
 mv ../*.deb built/
 
