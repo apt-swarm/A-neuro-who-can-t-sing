@@ -21,3 +21,5 @@ mkdir -p ../built
 mv ../*.deb ../built/
 
 export version "version=$(cat setup.py | grep version | awk -F"'" '{print $2}')"
+
+echo $version
