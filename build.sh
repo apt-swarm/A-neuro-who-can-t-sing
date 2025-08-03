@@ -18,5 +18,5 @@ chmod +x debian/rules
 
 # move files that need to be uploaded to the built directory
 mkdir -p built
-mv ../*.deb built/
+mv ../*.deb ../built/
 
