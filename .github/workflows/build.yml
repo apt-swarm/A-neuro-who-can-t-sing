@@ -1,0 +1,32 @@
+name: Build the .deb package
+
+# Trigger the workflow whenever you push new .deb files or change the workflow itself
+on:
+  push:
+    paths:
+      - '**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # 1. Dowload the script
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          path: build 
+
+      # 2. Execute the build script
+      - name: execute build script
+        run: |
+          cd build
+          chmod +x build.sh
+          ./build.sh
+
+      # 3. Upload everything in the built directory to the relases
+      - name: Upload .deb package
+        uses: actions/upload-artifact@v4
+        with:
+          name: a-neuro-who-can-t-sing
+          
