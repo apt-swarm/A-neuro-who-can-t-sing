@@ -3,7 +3,7 @@ name: Build the .deb package
 # Trigger the workflow whenever you push new .deb files or change the workflow itself
 on:
   push:
-    paths:
+    tags:
       - '**'
 jobs:
   build:
@@ -30,6 +30,6 @@ jobs:
       # 3. Upload everything in the built directory to the relases
       - uses: ncipollo/release-action@v1
         with:
-          tag: ${{ env.version }}
+          tag: ${{ github.ref_name }}
           artifacts: "built/*.deb"
           body: "This is the release of the latest build of A Neuro Who Can't Sing. It is completely automated and isnt tested, so good luck!"
